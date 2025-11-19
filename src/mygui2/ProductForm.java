@@ -259,13 +259,16 @@ public class ProductForm extends javax.swing.JInternalFrame {
             double price = Double.parseDouble(txtPrice.getText());
             int quantity = Integer.parseInt(txtStock.getText());
             
-            GlobalVar.products.stream().filter(a -> a.getProductId() == productId).findFirst().ifPresent(obj -> {
-                obj.setTitle(productName);
-                obj.setDescription(description);
-                obj.setPrice(price);
-                obj.setQuantity(quantity);
-                obj.setProductId(productId);
-            });
+            GlobalVar.products
+                    .stream()
+                    .filter(a -> a.getProductId() == productId)
+                    .findFirst().ifPresent(obj -> {
+                        obj.setTitle(productName);
+                        obj.setDescription(description);
+                        obj.setPrice(price);
+                        obj.setQuantity(quantity);
+                        obj.setProductId(productId);
+                    });
             
             reloadTable();
         }
