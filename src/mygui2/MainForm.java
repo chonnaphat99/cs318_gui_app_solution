@@ -4,6 +4,8 @@
  */
 package mygui2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author chonn
@@ -72,10 +74,20 @@ public class MainForm extends javax.swing.JFrame {
         jMenu1.add(menuLogin);
 
         menuLogout.setText("Logout");
+        menuLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLogoutActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuLogout);
         jMenu1.add(jSeparator1);
 
         menuExit.setText("Exit");
+        menuExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuExitActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuExit);
 
         jMenuBar1.add(jMenu1);
@@ -132,12 +144,17 @@ public class MainForm extends javax.swing.JFrame {
                             break;
                         }
                     }
+                    
+                    if (GlobalVar.currentUser == null) {
+                        JOptionPane.showMessageDialog(jDesktopPane1, "Invalid username or password!", "Authentication", JOptionPane.OK_OPTION);
+                    }
                 }
                }
             ); 
             jDesktopPane1.add(loginForm);
         }
         loginForm.setVisible(true);
+        loginForm.requestFocus();
     }//GEN-LAST:event_menuLoginActionPerformed
 
     private void menuProductListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProductListActionPerformed
@@ -157,6 +174,19 @@ public class MainForm extends javax.swing.JFrame {
         
         productDetailForm.setVisible(true);
     }//GEN-LAST:event_menuNewProductActionPerformed
+
+    private void menuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExitActionPerformed
+        // Exit the app without error.
+        System.exit(0);
+    }//GEN-LAST:event_menuExitActionPerformed
+
+    private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
+        menuProducts.setVisible(false);
+        menuLogout.setVisible(false);
+        menuLogin.setVisible(true);
+        
+        GlobalVar.currentUser = null;
+    }//GEN-LAST:event_menuLogoutActionPerformed
 
     /**
      * @param args the command line arguments
