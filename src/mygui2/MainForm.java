@@ -22,7 +22,7 @@ public class MainForm extends javax.swing.JFrame {
         
         menuProducts.setVisible(false);
         menuLogout.setVisible(false);
-        this.setTitle("Inventory by Chonnawee");
+        this.setTitle("Inventory by Chonnawee Phiphatkul");
     }
 
     /**
